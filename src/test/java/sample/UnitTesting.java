@@ -9,38 +9,55 @@ import org.junit.Test;
 public class UnitTesting { 
 	
 	/**
-	 * Testing all methods by making object 
-	 *   and comparing with respective pattern
-	 * 
+	 * steps
+	 * =================================
+	 * 1. taking vaid email sample
+	 * 2. taking unvaid email sample
+	 * 3.testing valid emails
+	 * 4.testing unvalid emails
+	 * ==================================
 	 */
+	
+	
+	/*
+	 * 1. taking vaid email sample
+	 */
+
+	public String[] validemail = { "abc@yahoo.com", "abc-100@yahoo.com", "abc.100@yahoo.com", "abc111@abc.com",
+			"abc-100@abc.net", "abc.100@abc.com.au", "abc@1.com", "abc@gmail.com.com" };
+
+	/*
+	 * 2. taking unvaid email sample
+	 */
+	public String[] unvalidemail = { "abc", "abc@.com.my", "abc123@gmail.a", "abc123@.com", "abc123@.com.com",
+			"..abc@abc.com", ".abc()@gmail.com", "abc@%.com", "abc.@gmail.com", "abc@abc@gmail.com", "abc@gmail.com.1a",
+			"abc@gmail.com.aa.au" };
+
+	/*
+	 * 3.testing valid emails
+	 */
+
 	@Test
-	public void firstname() {
-		Validation test = new Validation();
-		Boolean fn = test.firstname("Shardul");
-		assertEquals(true, fn);
+	public void test1() {
+		for (int i = 0; i < validemail.length; i++) {
+			String checker1 = validemail[i];
+
+			Boolean email = Validation.email(checker1);
+			assertEquals(true, email);
+		}
 	}
+
+	/*
+	 * 4.testing unvalid emails
+	 */
+
 	@Test
-	public void lastname() {
-		Validation test1 = new Validation();
-		Boolean lastname = test1.lastname("Kumbhar");
-		assertEquals(true, lastname);
-	}
-	@Test
-	public void email() {
-		Validation test2 = new Validation();
-		Boolean email = test2.email("abcde53@bl.co.in");
-		assertEquals(true, email);
-	}
-	@Test
-	public void Number() {
-		Validation test3 = new Validation();
-		Boolean phone = test3.number("91 5689423684");
-		assertEquals(true, phone);
-	}
-	@Test
-	public void password() {
-		Validation test4 = new Validation();
-		Boolean output = test4.password("abc@yahoo.com");
-		assertEquals(true, output);
+	public void test2() {
+		for (int i = 0; i < unvalidemail.length; i++) {
+			String checker2 = unvalidemail[i];
+
+			Boolean email = Validation.email(checker2);
+			assertEquals(false, email);
+		}
 	}
 }
