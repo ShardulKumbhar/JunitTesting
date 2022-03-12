@@ -1,6 +1,6 @@
 package sample;
 
-public class Validation {
+public class Validation1 {
 
 	/*
 	 * 1.creating method to check email pattern

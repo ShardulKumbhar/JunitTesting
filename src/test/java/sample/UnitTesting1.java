@@ -6,7 +6,7 @@ import org.junit.Test;
 
 
 
-public class UnitTesting { 
+public class UnitTesting1 { 
 	
 	/**
 	 * steps
@@ -42,7 +42,7 @@ public class UnitTesting {
 		for (int i = 0; i < validemail.length; i++) {
 			String checker1 = validemail[i];
 
-			Boolean email = Validation.email(checker1);
+			Boolean email = Validation1.email(checker1);
 			assertEquals(true, email);
 		}
 	}
@@ -56,7 +56,7 @@ public class UnitTesting {
 		for (int i = 0; i < unvalidemail.length; i++) {
 			String checker2 = unvalidemail[i];
 
-			Boolean email = Validation.email(checker2);
+			Boolean email = Validation1.email(checker2);
 			assertEquals(false, email);
 		}
 	}
