@@ -4,46 +4,51 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import userregistration.UserRegistration;
+
 
 
 public class UnitTesting { 
 
-	/**
-	 * Testing all methods by making object and comparing with respective pattern
+	Validation userReg = new Validation();
+
+	/*
+	 * common steps ==================================================== 
+	 * testing
+	 * first name /last name /email/phone number
+	 * taking boolean output 
+	 * calling method to check pattern and matcher
+	 * comparing output with assertequals
+	 * ====================================================
 	 */
-
 	@Test
-	public void firstname() {
-		Validation test = new Validation();
-		Boolean fn = test.firstname("Shardul");
-		assertEquals(true, fn);
+	public void firstName() {
+		boolean result = userReg.validateFirstName("Shardul");
+		assertEquals(true, result);
 	}
 
 	@Test
-	public void lastname() {
-		Validation test1 = new Validation();
-		Boolean lastname = test1.lastname("Kumbhar");
-		assertEquals(true, lastname);
+	public void lastName() {
+		boolean result = userReg.validateLastName("Kumbhar");
+		assertEquals(true, result);
 	}
 
 	@Test
-	public void email() {
-		Validation test2 = new Validation();
-		Boolean email = test2.email("abcde53@bl.co.in");
-		assertEquals(true, email);
-	}
-
-	@Test
-	public void Number() {
-		Validation test3 = new Validation();
-		Boolean phone = test3.number("91 5689423684");
-		assertEquals(true, phone);
+	public void phoneNumber() {
+		boolean result = userReg.validatePhoneNumber("91 7709125030");
+		assertEquals(true, result);
 	}
 
 	@Test
 	public void password() {
-		Validation test4 = new Validation();
-		Boolean output = test4.password("abc@yahoo.com");
-		assertEquals(true, output);
+		boolean result = userReg.validatePassword("Kumbhar@123");
+		assertEquals(true, result);
 	}
+
+	@Test
+	public void email() {
+		boolean result = userReg.validateEmail("yahhoo@123.com");
+		assertEquals(true, result);
+	}
+
 }

@@ -1,53 +1,61 @@
 package sample;
 
+import java.util.regex.Pattern;
+
 public class Validation {
 
-	/**
-	 * Steps
-	 * =========================================
-	 * 1.Method for first name pattern
-	 * 2.method for last name pattern
-	 * 3. method for email pattern
-	 * 4.method for phone numbher pattern
-	 * 5.method for password pattern
-	 * ==========================================
-	 */
 
 	/*
-	 * 1.Method for first name pattern
+	 * 1.created varous patterns to match
 	 */
-	public static boolean firstname(String firstname) {
-		return firstname.matches("[A-Z][a-z]*");
-	}
+    private static final String namePattern = "^[A-Z]{1}[a-z]{2,}$";
+    private static final String emailPattern = "^[a-z0-9]{3,}+([_+-.][a-z0-9]{3,}+)*@[a-z0-9]+.[a-z]{2,3}+(.[a-z]{2,3}){0,1}$";
+    private static final String phonePattern = "^[0-9]{2}[ ]?[6-9]{1}[0-9]{9}$";
+    private static final String passwordPattern = "^(?=.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\\W).*$";
 
-	/*
-	 * 2.method for last name pattern
-	 */
-	public static boolean lastname(String lastname) {
-		return lastname.matches("[A-Z]{1}[a-z]{3,}");
-	}
+    /*
+     * 2.created method to check first name
+     */
+    public boolean validateFirstName(String fname){
+        Pattern pattern = Pattern.compile(namePattern);
+ 
+        return pattern.matches(namePattern,fname);
+       
+    }
 
-	/*
-	 * 3. method for email pattern 1.creating method to check email pattern
-	 */
-	public static boolean email(String mail) {
-		return mail.matches("([a-z]+[0-9]+@bl[.]co[.]in)*");
-	}
+    /*
+     * 3.created method to check last name
+     */
+    public boolean validateLastName(String lName) {
+        Pattern pattern = Pattern.compile(namePattern);
+        
+        return pattern.matches(namePattern,lName);
+        
+    }
+    /*
+     *4. created method to check email
+     */
+    public boolean validateEmail(String email) {
+        Pattern pattern = Pattern.compile(emailPattern);
+        return pattern.matches(emailPattern,email);
+    }
 
-	/*
-	 * 4.method for phone numbher pattern
-	 */
-	public static boolean number(String phone) {
-		return phone.matches("^([0-9]{2}\\s[0-9]{10})$");
-	}
+    /*
+     * 5.created method to check phone number
+     */
+    public boolean validatePhoneNumber(String phNumber) {
+    	
+        Pattern pattern = Pattern.compile(phonePattern);
+        return pattern.matches(phonePattern,phNumber);
+    }
 
-	/*
-	 * 5.method for password pattern
-	 */
-
-	public static boolean password(String password) {
-		return password.matches("^[a-zA-Z0-9]+([._+-]*[0-9A-Za-z]+)*@[a-zA-Z0-9]+.[a-zA-Z]{2,4}([.][a-z]{2,4})?$");
-
-	}
-
+    /*
+     *6. created method to check password
+     */
+    public boolean validatePassword(String password) {
+        Pattern pattern = Pattern.compile(passwordPattern);
+        return pattern.matches(passwordPattern,password);
+    
+    }
 }
+
